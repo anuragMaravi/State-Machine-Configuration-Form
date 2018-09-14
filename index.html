@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Configuration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Lato:300|Open+Sans" rel="stylesheet">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<section class="content">
+  <h1 class="content__heading">State Machine Configuration</h1>
+  <p class="content__lede">Make a rough sketch of the state machine to fill the transitions easily.</p>
+  <form class="content__form contact-form">
+   
+    
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="name">State Machine Name</label>
+      <input class="contact-form__input contact-form__input--text" id="stateMachineName" name="stateMachineName" type="text"/>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="email">Initial State</label>
+      <input class="contact-form__input contact-form__input--text" id="initialState" name="initialState" type="text"/>
+    </div>
+
+    <div class="testing">
+      <p>States:</p>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="email">State Name</label>
+      <input class="contact-form__input contact-form__input--text" id="stateName" name="stateName" type="text"/>
+    </div>
+    <button class="contact-form__button" type="button" onclick="setStateNames()">ADD STATE</button>
+    <p class="pa" id="stateText"></p>
+
+    <div class="testing">
+      <p>Events:</p>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="email">Event Name (Must be same as labels)</label>
+      <input class="contact-form__input contact-form__input--text" id="eventName" name="eventName" type="text"/>
+    </div>
+    <button class="contact-form__button" type="button" onclick="setEventNames()">ADD EVENT</button>
+    <p class="pa" id="eventText"></p>
+
+     
+
+    <div class="testing">
+      <p>Transitions:</p>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="state">From State</label>
+      <select class="contact-form__input contact-form__input--select" id="state" name="state"></select>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="event">Transition Condition (Event Name)</label>
+      <select class="contact-form__input contact-form__input--select" id="event" name="event"></select>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="nextState">Next State</label>
+      <select class="contact-form__input contact-form__input--select" id="nextState" name="nextState">
+      </select>
+    </div>
+    <div class="contact-form__input-group">
+      <label class="contact-form__label" for="direction">Direction for Next Event</label>
+      <select class="contact-form__input contact-form__input--select" id="direction" name="direction">
+        <option>N</option>
+        <option>NE</option>
+        <option>E</option>
+        <option>SE</option>
+        <option>S</option>
+        <option>SW</option>
+        <option>W</option>
+        <option>NW</option>
+      </select>
+    </div>
+    <button class="contact-form__button" type="button" onclick="setTransition()">ADD Transition</button>
+    <p class="pa" id="transitionText"></p>
+    <button style="margin-left: 200px;margin-top: 100px;"class="contact-form__button" type="submit">Submit</button>
+
+  </form>
+
+</section>
+
+<div class="results">
+  <h2 class="results__heading">Form Data</h2>
+  <pre class="results__display-wrapper"><code class="results__display"></code></pre>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.min.js'></script>
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
