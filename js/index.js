@@ -5,14 +5,49 @@ var transitions = []
 var eventsJArray = []
 var statesJArray = []
 var transitionJArray = []
+var data = []
+
+var x = document.getElementById("eventDelay");
+x.style.display = "none"
+
+var rad = document.myForm.eventType;
+var prev = null;
+for(var i = 0; i < rad.length; i++) {
+    rad[i].onclick = function() {
+        if(this != prev) {
+            prev = this;
+        }
+        if(this.value == "discrete")
+          x.style.display = "block"
+        else
+          x.style.display = "none"  
+        
+    };
+}
 
 //Events
 function setEventNames() {
   var eventValue = document.getElementsByName("eventName")[0].value;
+  var eventDelay = document.getElementsByName("eventDelay")[0].value;
+
+  var radios = document.getElementsByName('eventType');
+
+  for (var i = 0, length = radios.length; i < length; i++)
+  {
+   if (radios[i].checked)
+   {
+    var eventType = radios[i].value;
+    break;
+   }
+  }
+
   if(eventValue != ""){
     var eventObj = new Object();
     eventObj.eventName = eventValue;
-    eventObj.eventType = "continuous";
+    eventObj.eventType = eventType;
+
+    if(eventType == "discrete")
+      eventObj.eventDelay = eventDelay;
     eventsJArray.push(eventObj);
 
     events.push(eventValue);
@@ -99,23 +134,24 @@ obj.initialState = document.getElementsByName("initialState")[0].value;
 obj.events = eventsJArray;
 obj.states = statesJArray;
 
+var configObj = new Object();
+data.push(obj);
+configObj.config = data;
+
 var dataContainer = document.getElementsByClassName('results__display')[0];
-dataContainer.textContent = JSON.stringify(obj, null, "  ");
-download('config_direction.json', JSON.stringify(obj));
-
-
+dataContainer.textContent = JSON.stringify(configObj, null, "  ");
+download('config_direction.json', JSON.stringify(configObj));
+location.reload();
 };
 
+//Download the configuration JSON file
 function download(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
-
   element.style.display = 'none';
   document.body.appendChild(element);
-
   element.click();
-
   document.body.removeChild(element);
 }
 

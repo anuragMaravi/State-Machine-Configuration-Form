@@ -19,7 +19,7 @@
 <section class="content">
   <h1 class="content__heading">State Machine Configuration</h1>
   <p class="content__lede">Make a rough sketch of the state machine to fill the transitions easily.</p>
-  <form class="content__form contact-form">
+  <form name="myForm" class="content__form contact-form">
    
     
     <div class="contact-form__input-group">
@@ -47,6 +47,12 @@
     <div class="contact-form__input-group">
       <label class="contact-form__label" for="email">Event Name (Must be same as labels)</label>
       <input class="contact-form__input contact-form__input--text" id="eventName" name="eventName" type="text"/>
+      <input type="radio" name="eventType" value="continuous"> Continuous<br>
+      <input type="radio" name="eventType" value="discrete"> Discrete<br>
+
+      <label class="contact-form__label" for="email">Event Delay</label>
+      <input class="contact-form__input contact-form__input--text" id="eventDelay" name="eventDelay" type="text"/>
+
     </div>
     <button class="contact-form__button" type="button" onclick="setEventNames()">ADD EVENT</button>
     <p class="pa" id="eventText"></p>
@@ -81,6 +87,7 @@
         <option>W</option>
         <option>NW</option>
       </select>
+      <img src="https://horseexpoevents.com/wp-content/uploads/2014/08/directions_0-300x300.jpg" alt="Directions">
     </div>
     <button class="contact-form__button" type="button" onclick="setTransition()">ADD Transition</button>
     <p class="pa" id="transitionText"></p>
